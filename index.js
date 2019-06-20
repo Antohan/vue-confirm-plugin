@@ -1,10 +1,9 @@
-const ConfirmDialog = {
+const VueConfirmPlugin = {
   install(Vue) {
-    // eslint-disable-next-line no-param-reassign
-    Vue.prototype.$confirm = component => new Promise((resolve) => {
+    Vue.prototype.$confirm = (component, options) => new Promise((resolve) => {
       const Dialog = Vue.extend(component);
       const instance = new Dialog({
-        propsData: { dialog: true },
+        propsData: { dialog: true, props: { ...options } },
         destroyed() {
           document.body.removeChild(instance.$el);
           resolve(instance.choice);
@@ -18,4 +17,8 @@ const ConfirmDialog = {
   },
 };
 
-export default ConfirmDialog;
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(VueConfirmPlugin);
+}
+
+export default VueConfirmPlugin;
