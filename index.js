@@ -1,9 +1,9 @@
 const VueConfirmPlugin = {
   install(Vue) {
-    Vue.prototype.$confirm = (component, props) => new Promise((resolve) => {
+    Vue.prototype.$confirm = (component, dialogProps) => new Promise((resolve) => {
       const Dialog = Vue.extend(component);
       const instance = new Dialog({
-        propsData: { ...props },
+        propsData: dialogProps,
         destroyed() {
           document.body.removeChild(instance.$el);
           resolve(instance.choice);

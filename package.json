@@ -1,6 +1,6 @@
 {
   "name": "vue-confirm-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./index.js",
   "keywords": [
     "vue",

@@ -35,13 +35,13 @@ this.$confirm(ConfirmDialog).then(res => {
   // res is answer from dialog.
 });
 ```
-or with propData
+or with props (**the plugin get props as data object**)
 ```javascript
-const confirmData = {
+const dialogProps = {
   question: this.confirmMessage,
 };
 
-this.$confirm(ConfirmDialog, confirmData).then(res => {
+this.$confirm(ConfirmDialog, dialogProps).then(res => {
   // res is answer from dialog.
 });
 ```
@@ -55,7 +55,11 @@ If you pass additional props, you should describe this in the dialog component p
 ...
   name: 'ConfirmDialog',
   props: {
-    // you dialog props
+    // dialogProps
+    question: {
+      type: String,
+      required: true,  
+    },
   },
 ...
 }
