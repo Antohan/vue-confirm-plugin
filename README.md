@@ -48,19 +48,17 @@ this.$confirm(ConfirmDialog, confirmData).then(res => {
 
 Also you can use `async/await` syntax.
 
-You dialog component should should take props `dialog` for controlling display and `options` for additional dialog data.
+If you pass additional props, you should describe this in the dialog component props.
 
 ```javascript
-props: {
-  dialog: {
-    type: Boolean,
-    default: false,
+{
+...
+  name: 'ConfirmDialog',
+  props: {
+    // you dialog props
   },
-  options: {
-    type: Object,
-    default: () => ({}),
-  },
-},
+...
+}
 ```
 
 And has method choose which calling by dialog actions
